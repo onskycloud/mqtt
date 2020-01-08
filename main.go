@@ -66,7 +66,8 @@ func GetTimeZone(locale string) string {
 	}
 	return timezone
 }
-func isMn(r rune) bool {
+// IsMn is mn rune
+func IsMn(r rune) bool {
 	return unicode.Is(unicode.Mn, r) // Mn: nonspacing marks
 }
 
@@ -122,22 +123,22 @@ func GetNotificationType(securityType model.SecurityType) model.NotificationType
 }
 
 // CheckSecurityState detect mode is security or safety
-func CheckSecurityState(templateType model.SecurityType, safetyValue int, securityValue int) (int, model.Mode) {
+func CheckSecurityState(templateType model.SecurityType) model.Mode {
 	switch templateType {
 	case model.Co:
-		return safetyValue, model.Safety
+		return model.Safety
 	case model.Smoke:
-		return safetyValue, model.Safety
+		return model.Safety
 	case model.SOS:
-		return safetyValue, model.Safety
+		return model.Safety
 	case model.TempHumd:
-		return safetyValue, model.Safety
+		return model.Safety
 	case model.OSLocus:
-		return safetyValue, model.Safety
+		return model.Basic
 	case model.DoorLock:
-		return securityValue, model.Security
+		return model.Security
 	default:
-		return securityValue, model.Security
+		return model.Security
 	}
 }
 
