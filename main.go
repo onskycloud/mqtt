@@ -66,6 +66,7 @@ func GetTimeZone(locale string) string {
 	}
 	return timezone
 }
+
 // IsMn is mn rune
 func IsMn(r rune) bool {
 	return unicode.Is(unicode.Mn, r) // Mn: nonspacing marks
@@ -159,7 +160,7 @@ func ConvertMode(mode string) model.Mode {
 //-------------PREPARE BODY HELPER--------------------
 
 // PrepareResourceLocale prepare text message for any locale
-func PrepareResourceLocale(templateType model.SecurityType, key string, locale string, gatewayName string, deviceName string, zoneName string, date string, timestamp string) string {
+func PrepareResourceLocale(templateType model.NotificationType, key string, locale string, gatewayName string, deviceName string, zoneName string, date string, timestamp string) string {
 	switch locale {
 	case "en-US":
 		switch key {
@@ -187,16 +188,18 @@ func PrepareResourceLocale(templateType model.SecurityType, key string, locale s
 			return "Please check"
 		case "security_alert":
 			switch templateType {
-			case model.Co:
+			case model.SafetyBreachCO:
 				return "Detects toxic gas CO exceeds exposure limits at"
-			case model.Smoke:
+			case model.SafetyBreachSmoke:
 				return "Detecting fire signs at"
-			case model.SOS:
+			case model.SafetyBreachSOS:
 				return "Emergency SOS signals are sent from the area"
-			case model.TempHumd:
+			case model.SafetyBreachTempHumd:
 				return "Room temperature exceeds the threshold allowed"
-			case model.OSLocus:
+			case model.OSLocusSOS:
 				return "Emergency signals are sent from your WAVTRAXX device"
+			case model.OSLocusTemp:
+				return "WAVTRAXX detect a temperature exceeds the threshold allowed"
 			default:
 				return "Intruder detected in"
 			}
@@ -228,16 +231,18 @@ func PrepareResourceLocale(templateType model.SecurityType, key string, locale s
 			return "Vui long kiem tra"
 		case "security_alert":
 			switch templateType {
-			case model.Co:
+			case model.SafetyBreachCO:
 				return "Phat hien khi doc CO vuot nguong cho phep tai"
-			case model.Smoke:
+			case model.SafetyBreachSmoke:
 				return "Phat hien dau hieu chay no tai"
-			case model.SOS:
+			case model.SafetyBreachSOS:
 				return "Tin hieu khan cap SOS duoc gui di tu khu"
-			case model.TempHumd:
+			case model.SafetyBreachTempHumd:
 				return "Nhiet do trong phong vuot qua nguong cho phep"
-			case model.OSLocus:
+			case model.OSLocusSOS:
 				return "Tin hieu khan cap duoc gui di tu thiet bi WAVTRAXX"
+			case model.OSLocusTemp:
+				return "Thiet bi WAVTRAXX phat hien nhiet do vuot qua nguong cho phep"
 			default:
 				return "Phat hien dot nhap tai"
 			}
@@ -247,7 +252,7 @@ func PrepareResourceLocale(templateType model.SecurityType, key string, locale s
 }
 
 // PrepareBody prepare body of a message
-func PrepareBody(templateType model.SecurityType, locale string, gatewayName string, deviceName string, zoneName string, timezone string) string {
+func PrepareBody(templateType model.NotificationType, locale string, gatewayName string, deviceName string, zoneName string, timezone string) string {
 	now := time.Now()
 	if timezone == "" {
 		timezone = GetTimeZone(locale)
@@ -280,7 +285,7 @@ func PrepareBody(templateType model.SecurityType, locale string, gatewayName str
 }
 
 // PrepareMedia prepare a media url
-func PrepareMedia(templateType model.SecurityType, locale string) string {
+func PrepareMedia(templateType model.NotificationType, locale string) string {
 	callType := strings.ToLower(strings.Replace(templateType.String(), " ", "-", -1))
 	return fmt.Sprintf("?safety=%s&locale=%s", callType, locale)
 }

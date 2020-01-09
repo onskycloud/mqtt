@@ -2,4 +2,4 @@ module github.com/onskycloud/mqtt
 
 go 1.13
 
-require github.com/onskycloud/rbac v1.1.0
+require github.com/onskycloud/rbac v1.1.6
