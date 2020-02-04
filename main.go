@@ -31,6 +31,44 @@ func FindTimeZone(properties []*proto.Property, defaultTimezone string) string {
 	return defaultTimezone
 }
 
+// GetMessageKey get message key for notification simple
+func GetMessageKey(notificationType model.NotificationType, value int) string {
+	switch notificationType {
+	case model.DoorSensor:
+		if value == 1 {
+			return model.DoorOpen
+		}
+		return model.DoorClose
+	case model.SecurityBreach:
+		return model.SecurityBreachMessage
+	case model.SafetyBreachCO:
+		return model.SafetyBreachMessageCO
+	case model.SafetyBreachSOS:
+		return model.SafetyBreachMessageSOS
+	case model.SafetyBreachSmoke:
+		return model.SafetyBreachMessageSmoke
+	case model.SafetyBreachTempHumd:
+		return model.SafetyBreachMessageTempHumd
+	case model.SecurityAlarm:
+		if value == 2 {
+			return model.SecurityAlarmAway
+		}
+		if value == 1 {
+			return model.SecurityAlarmHome
+		}
+		return model.SecurityAlarmOff
+	case model.SafetyAlarm:
+		if value == 0 {
+			return model.SafetyAlarmEnable
+		}
+		return model.SafetyAlarmDisable
+	case model.MotionSensor:
+		return model.MotionDetect
+	default:
+		return model.MotionDetect
+	}
+}
+
 // ConvertUTCToLocalTime convert utc to local time
 func ConvertUTCToLocalTime(dateTime time.Time, timezone string) string {
 	//init the loc
