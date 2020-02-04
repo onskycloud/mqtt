@@ -108,6 +108,8 @@ github.com/go-log/log v0.1.0 h1:wudGTNsiGzrD5ZjgIkVZ517ugi2XRe9Q/xRCzwEO4/U=
 github.com/go-log/log v0.1.0/go.mod h1:4mBwpdRMFLiuXZDCwU2lKQFsoSCo72j3HqBK9d81N2M=
 github.com/go-logfmt/logfmt v0.3.0/go.mod h1:Qt1PoO58o5twSAckw1HlFXLmHsOX5/0LbT9GBnD5lWE=
 github.com/go-logfmt/logfmt v0.4.0/go.mod h1:3RMwSq7FuexP4Kalkev3ejPJsZTpXXBr9+V4qmtdjCk=
+github.com/go-pg/pg v8.0.6+incompatible h1:Hi7yUJ2zwmHFq1Mar5XqhCe3NJ7j9r+BaiNmd+vqf+A=
+github.com/go-pg/pg v8.0.6+incompatible/go.mod h1:a2oXow+aFOrvwcKs3eIA0lNFmMilrxK2sOkB5NWe0vA=
 github.com/go-playground/locales v0.12.1/go.mod h1:IUMDtCfWo/w/mtMfIE/IG2K+Ey3ygWanZIBtBW0W2TM=
 github.com/go-playground/locales v0.13.0/go.mod h1:taPMhCMXrRLJO55olJkUXHZBHCxTMfnGwq/HNwmWNS8=
 github.com/go-playground/universal-translator v0.16.0/go.mod h1:1AnU7NaIRDWWzGEKwgtJRd2xk99HeFyHw3yid4rvQIY=
@@ -168,6 +170,8 @@ github.com/ijc/Gotty v0.0.0-20170406111628-a8b993ba6abd/go.mod h1:3LVOLeyx9XVvwP
 github.com/imdario/mergo v0.3.8/go.mod h1:2EnlNZ0deacrJVfApfmtdGgDfMuh/nq6Ok1EcJh5FfA=
 github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99/go.mod h1:1lJo3i6rXxKeerYnT8Nvf0QmHCRC1n8sfWVwXF2Frvo=
 github.com/jessevdk/go-flags v1.4.0/go.mod h1:4FA24M0QyGHXBuZZK/XkWh8h0e1EYbRYJSGM75WSRxI=
+github.com/jinzhu/inflection v1.0.0 h1:K317FqzuhWc8YvSVlFMCCUb36O/S9MCKRDI7QkRKD/E=
+github.com/jinzhu/inflection v1.0.0/go.mod h1:h+uFLlag+Qp1Va5pdKtLDYj+kHp5pxUVkryuEj+Srlc=
 github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af/go.mod h1:Nht3zPeWKUH0NzdCt2Blrr5ys8VGpn0CEB0cQHVjt7k=
 github.com/jonboulle/clockwork v0.1.0/go.mod h1:Ii8DK3G1RaLaWxj9trq07+26W01tbo22gdxWY5EU2bo=
 github.com/joncalhoun/qson v0.0.0-20170526102502-8a9cab3a62b1/go.mod h1:DFXrEwSRX0p/aSvxE21319menCBFeQO0jXpRj7LEZUA=
@@ -264,6 +268,8 @@ github.com/onskycloud/rbac v1.1.0 h1:MU7CL7DlmTiNPj+6YZqE8bZst6JwyplRDM7by0HMapI
 github.com/onskycloud/rbac v1.1.0/go.mod h1:m1GzrNO+jvUbbzU5qu1qhInCDNWlM9h6FpT2KW5lY1U=
 github.com/onskycloud/rbac v1.1.6 h1:2wSB+BSO7fLyyNTG0W2SrRRtl+QNGaWqGJSYEHtY88g=
 github.com/onskycloud/rbac v1.1.6/go.mod h1:m1GzrNO+jvUbbzU5qu1qhInCDNWlM9h6FpT2KW5lY1U=
+github.com/onskycloud/rbac v1.5.1 h1:n526/muoGRpCmM6lpRr8VhIXlQSla6h2fKjiFbUnZyI=
+github.com/onskycloud/rbac v1.5.1/go.mod h1:uli2BhR106dT43XC1TDbUvs0iY5laQlrIkatFigWSXU=
 github.com/onskycloud/resource-helper v1.0.2/go.mod h1:0Cjw6U5SpUUK5GX8bP4raG9tv82OPv8zOxfdX+86slI=
 github.com/onskycloud/structs v0.0.0-20191025050123-8eb2c09f5050/go.mod h1:1ZCgLrmY4yAoLtbw1iKrSPuw4LOo+DPORYYJtA1zao4=
 github.com/opencontainers/go-digest v0.0.0-20180430190053-c9281466c8b2/go.mod h1:cMLVZDEM3+U2I4VmLI6N8jQYUd2OVphdqWwCJHrFt2s=

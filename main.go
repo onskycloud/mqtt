@@ -1,6 +1,7 @@
 package mqtt
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"log"
@@ -11,6 +12,7 @@ import (
 
 	"github.com/onskycloud/rbac/model"
 	proto "github.com/onskycloud/rbac/proto/calling"
+	notifyProto "github.com/onskycloud/rbac/proto/simple-notification"
 )
 
 // TimeZone default time zone
@@ -27,6 +29,67 @@ func FindTimeZone(properties []*proto.Property, defaultTimezone string) string {
 		}
 	}
 	return defaultTimezone
+}
+
+// ConvertUTCToLocalTime convert utc to local time
+func ConvertUTCToLocalTime(dateTime time.Time, timezone string) string {
+	//init the loc
+	location, err := time.LoadLocation(timezone)
+	//set timezone,
+	if err != nil || location == nil {
+		return dateTime.String()
+	}
+	return dateTime.In(location).String()
+}
+
+// MakeDataResponse make data response for simple notification
+func MakeDataResponse(notifications []model.Notification) string {
+	var data []*notifyProto.NotificationResult
+
+	for _, result := range notifications {
+		messageEN := fmt.Sprintf("%s motion detected", result.ThingDisplayName)
+		messageVN := fmt.Sprintf("%s phát hiện chuyển động", result.ThingDisplayName)
+		if result.Localizes != nil {
+			if len(result.Localizes) > 0 {
+				messageEN = result.Localizes[0].Message
+				if len(result.Localizes) > 1 {
+					messageVN = result.Localizes[1].Message
+				}
+			}
+		}
+		status := int32(result.Status)
+		if result.Status == model.Initial {
+			status = 0
+		}
+		notification := &notifyProto.NotificationResult{
+			Id:                 int32(result.ID),
+			ThingName:          result.ThingName,
+			ThingDisplayName:   result.ThingDisplayName,
+			ThingSerial:        result.ThingSerial,
+			GatewayName:        result.GatewayName,
+			GatewayDisplayName: result.GatewayDisplayName,
+			GatewayMacAddress:  result.GatewayMacAddress,
+			ZoneName:           result.ZoneName,
+			ZoneDisplayName:    result.ZoneDisplayName,
+			Status:             status,
+			Type:               int32(result.Type),
+			Template:           result.Template,
+			State:              int32(result.State),
+			Description:        messageEN,
+			DescriptionVN:      messageVN,
+			DateTime:           ConvertUTCToLocalTime(result.CreatedAt, result.Timezone),
+			AlertType:          1,
+			Acknowledged:       0,
+			AlertStatus:        0,
+			DeviceId:           int32(result.DeviceID),
+		}
+		data = append(data, notification)
+	}
+	b, err := json.Marshal(data)
+	if err != nil {
+		return ""
+	}
+	return string(b)
 }
 
 // ParseTopic parse mqtt topic
