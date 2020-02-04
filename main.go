@@ -13,6 +13,22 @@ import (
 	proto "github.com/onskycloud/rbac/proto/calling"
 )
 
+// TimeZone default time zone
+const TimeZone = "Asia/Ho_Chi_Minh"
+
+// FindTimeZone find timezone of a thing
+func FindTimeZone(properties []*proto.Property, defaultTimezone string) string {
+	if defaultTimezone != "" {
+		defaultTimezone = TimeZone
+	}
+	for _, n := range properties {
+		if n.Name == "timezone" && n.Value != "" {
+			return n.Value
+		}
+	}
+	return defaultTimezone
+}
+
 // ParseTopic parse mqtt topic
 func ParseTopic(prefix string, topic string) (string, error) {
 	s1 := strings.Split(topic, "/")
