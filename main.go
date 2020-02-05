@@ -282,9 +282,16 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 	case "en-US":
 		switch key {
 		case "onsky_security":
-			return "OnSky Security & Safety service"
+			switch templateType {
+			case model.SafetyBreachSOS:
+				return "OnSky Medical Alert service"
+			default:
+				return "OnSky Security & Safety service"
+			}
 		case "zone":
 			return "zone"
+		case "phone":
+			return "phone"
 		case "gateway_name":
 			return gatewayName
 		case "zone_name":
@@ -302,7 +309,7 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 		case "time":
 			return timestamp
 		case "please_check":
-			return "Please check"
+			return "Check Now!"
 		case "security_alert":
 			switch templateType {
 			case model.SafetyBreachCO:
@@ -310,13 +317,13 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 			case model.SafetyBreachSmoke:
 				return "Detecting fire signs at"
 			case model.SafetyBreachSOS:
-				return "Emergency SOS signals are sent from the area"
+				return "Emergency SOS sent from location"
 			case model.SafetyBreachTempHumd:
-				return "Room temperature exceeds the threshold allowed"
+				return "Room temperature exceeds the threshold allowed at"
 			case model.OSLocusSOS:
-				return "Emergency signals are sent from your WAVTRAXX device"
+				return "Emergency signals are sent from your WAVTRAXX device at"
 			case model.OSLocusTemp:
-				return "WAVTRAXX detect a temperature exceeds the threshold allowed"
+				return "WAVTRAXX detect a temperature exceeds the threshold allowed at"
 			default:
 				return "Intruder detected in"
 			}
@@ -325,9 +332,16 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 	default:
 		switch key {
 		case "onsky_security":
-			return "Dich vu an ninh & an toan OnSky"
+			switch templateType {
+			case model.SafetyBreachSOS:
+				return "Dich vu y te OnSky"
+			default:
+				return "Dich vu an ninh & an toan OnSky"
+			}
 		case "zone":
 			return "khu"
+		case "phone":
+			return "SDT"
 		case "gateway_name":
 			return gatewayName
 		case "zone_name":
@@ -353,13 +367,13 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 			case model.SafetyBreachSmoke:
 				return "Phat hien dau hieu chay no tai"
 			case model.SafetyBreachSOS:
-				return "Tin hieu khan cap SOS duoc gui di tu khu"
+				return "Tin hieu khan cap SOS duoc gui di tu "
 			case model.SafetyBreachTempHumd:
-				return "Nhiet do trong phong vuot qua nguong cho phep"
+				return "Nhiet do trong phong vuot qua nguong cho phep tai"
 			case model.OSLocusSOS:
-				return "Tin hieu khan cap duoc gui di tu thiet bi WAVTRAXX"
+				return "Tin hieu khan cap duoc gui di tu thiet bi WAVTRAXX tai"
 			case model.OSLocusTemp:
-				return "Thiet bi WAVTRAXX phat hien nhiet do vuot qua nguong cho phep"
+				return "Thiet bi WAVTRAXX phat hien nhiet do vuot qua nguong cho phep tai"
 			default:
 				return "Phat hien dot nhap tai"
 			}
@@ -369,7 +383,7 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 }
 
 // PrepareBody prepare body of a message
-func PrepareBody(templateType model.NotificationType, locale string, gatewayName string, deviceName string, zoneName string, timezone string) string {
+func PrepareBody(templateType model.NotificationType, locale string, gatewayName string, deviceName string, zoneName string, timezone string, address string, phoneNumber string) string {
 	now := time.Now()
 	if timezone == "" {
 		timezone = GetTimeZone(locale)
@@ -384,12 +398,16 @@ func PrepareBody(templateType model.NotificationType, locale string, gatewayName
 	}
 	date := strconv.Itoa(now.Day()) + "/" + strconv.Itoa(int(now.Month()))
 	timestamp := strconv.Itoa(now.Hour()) + ":" + strconv.Itoa(now.Minute())
+	//  OnSky Security & Safety service. Emergency SOS sent from location: <Name>, <address>, <Phone>, device name and zone name. Date, Time. Check Now!
+	template := "{{onsky_security}}. {{security_alert}} {{address}}. {{phone}}:{{phone_number}}, {{device}} {{device_name}}. {{on_date}} {{date}}, {{at_time}} {{time}}. {{please_check}} ."
 
-	template := "{{onsky_security}}. {{security_alert}} {{zone}} {{gateway_name}}-{{zone_name}}, {{device}} {{device_name}}. {{on_date}} {{date}}, {{at_time}} {{time}}. {{please_check}} ."
 	str := strings.Replace(template, "{{onsky_security}}", PrepareResourceLocale(templateType, "onsky_security", locale, gatewayName, deviceName, zoneName, "", ""), -1)
-	str = strings.Replace(str, "{{zone}}", PrepareResourceLocale(templateType, "zone", locale, gatewayName, deviceName, zoneName, "", ""), -1)
-	str = strings.Replace(str, "{{gateway_name}}", PrepareResourceLocale(templateType, "gateway_name", locale, gatewayName, deviceName, zoneName, "", ""), -1)
-	str = strings.Replace(str, "{{zone_name}}", PrepareResourceLocale(templateType, "zone_name", locale, gatewayName, deviceName, zoneName, "", ""), -1)
+	// str = strings.Replace(str, "{{zone}}", PrepareResourceLocale(templateType, "zone", locale, gatewayName, deviceName, zoneName, "", ""), -1)
+	// str = strings.Replace(str, "{{gateway_name}}", PrepareResourceLocale(templateType, "gateway_name", locale, gatewayName, deviceName, zoneName, "", ""), -1)
+	// str = strings.Replace(str, "{{zone_name}}", PrepareResourceLocale(templateType, "zone_name", locale, gatewayName, deviceName, zoneName, "", ""), -1)
+	str = strings.Replace(str, "{{address}}", address, -1)
+	str = strings.Replace(str, "{{phone}}", PrepareResourceLocale(templateType, "phone", locale, gatewayName, deviceName, zoneName, "", ""), -1)
+	str = strings.Replace(str, "{{phone_number}}", phoneNumber, -1)
 	str = strings.Replace(str, "{{device}}", PrepareResourceLocale(templateType, "device", locale, gatewayName, deviceName, zoneName, "", ""), -1)
 	str = strings.Replace(str, "{{device_name}}", PrepareResourceLocale(templateType, "device_name", locale, gatewayName, deviceName, zoneName, "", ""), -1)
 	str = strings.Replace(str, "{{on_date}}", PrepareResourceLocale(templateType, "on_date", locale, gatewayName, deviceName, zoneName, "", ""), -1)
