@@ -62,6 +62,11 @@ func GetMessageKey(notificationType model.NotificationType, value int) string {
 			return model.SafetyAlarmEnable
 		}
 		return model.SafetyAlarmDisable
+	case model.LowBattery:
+		if value == 1 {
+			return model.LowBatteryMessage
+		}
+		return model.FullBatteryMessage
 	case model.MotionSensor:
 		return model.MotionDetect
 	default:
@@ -324,6 +329,8 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 				return "Emergency signals are sent from your WAVTRAXX device at"
 			case model.OSLocusTemp:
 				return "WAVTRAXX detect a temperature exceeds the threshold allowed at"
+			case model.LowBattery:
+				return "Warning: Low battery detected at"
 			default:
 				return "Intruder detected in"
 			}
@@ -374,6 +381,8 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 				return "Tin hieu khan cap duoc gui di tu thiet bi WAVTRAXX tai"
 			case model.OSLocusTemp:
 				return "Thiet bi WAVTRAXX phat hien nhiet do vuot qua nguong cho phep tai"
+			case model.LowBattery:
+				return "Canh bao thiet bi SOS yeu pin tai"
 			default:
 				return "Phat hien dot nhap tai"
 			}
