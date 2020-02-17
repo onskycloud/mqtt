@@ -67,6 +67,8 @@ func GetMessageKey(notificationType model.NotificationType, value int) string {
 			return model.LowBatteryMessage
 		}
 		return model.FullBatteryMessage
+	case model.Vibration:
+		return model.VibrationMessage
 	case model.MotionSensor:
 		return model.MotionDetect
 	default:

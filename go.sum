@@ -272,6 +272,8 @@ github.com/onskycloud/rbac v1.5.1 h1:n526/muoGRpCmM6lpRr8VhIXlQSla6h2fKjiFbUnZyI
 github.com/onskycloud/rbac v1.5.1/go.mod h1:uli2BhR106dT43XC1TDbUvs0iY5laQlrIkatFigWSXU=
 github.com/onskycloud/rbac v1.6.7 h1:wofN31WCccbVRJ22bE7nxevnLz7Ha4esMqsBpx4J+NU=
 github.com/onskycloud/rbac v1.6.7/go.mod h1:uli2BhR106dT43XC1TDbUvs0iY5laQlrIkatFigWSXU=
+github.com/onskycloud/rbac v1.7.0 h1:eS48WzqYPRZ6eBvzvO4pP+R+5kmd3f8tiSqoLrwq2Ho=
+github.com/onskycloud/rbac v1.7.0/go.mod h1:uli2BhR106dT43XC1TDbUvs0iY5laQlrIkatFigWSXU=
 github.com/onskycloud/resource-helper v1.0.2/go.mod h1:0Cjw6U5SpUUK5GX8bP4raG9tv82OPv8zOxfdX+86slI=
 github.com/onskycloud/structs v0.0.0-20191025050123-8eb2c09f5050/go.mod h1:1ZCgLrmY4yAoLtbw1iKrSPuw4LOo+DPORYYJtA1zao4=
 github.com/opencontainers/go-digest v0.0.0-20180430190053-c9281466c8b2/go.mod h1:cMLVZDEM3+U2I4VmLI6N8jQYUd2OVphdqWwCJHrFt2s=
