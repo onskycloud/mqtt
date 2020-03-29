@@ -69,6 +69,16 @@ func GetMessageKey(notificationType model.NotificationType, value int) string {
 		return model.FullBatteryMessage
 	case model.Vibration:
 		return model.VibrationMessage
+	case model.BedSensorHeartStop:
+		return model.BedSensorHeartStopMessage
+	case model.BedSensorApnea:
+		return model.BedSensorApneaMessage
+	case model.BedSensorTachycardia:
+		return model.BedSensorTachycardiaMessage
+	case model.BedSensorBradycardia:
+		return model.BedSensorBradycardiaMessage
+	case model.BedSensorBrainDisorder:
+		return model.BedSensorBrainDisorderMessage
 	case model.MotionSensor:
 		return model.MotionDetect
 	default:
@@ -211,6 +221,8 @@ func CheckTemplateType(name string) model.SecurityType {
 		return model.DoorLock
 	case "OS Locus":
 		return model.OSLocus
+	case "Bed Sensor":
+		return model.BedSensor
 	default:
 		return model.Motion
 	}
@@ -262,6 +274,8 @@ func CheckSecurityState(templateType model.SecurityType) model.Mode {
 		return model.Basic
 	case model.DoorLock:
 		return model.Security
+	case model.BedSensor:
+		return model.Safety
 	default:
 		return model.Security
 	}
@@ -291,6 +305,16 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 		case "onsky_security":
 			switch templateType {
 			case model.SafetyBreachSOS:
+				return "OnSky Medical Alert service"
+			case model.BedSensorHeartStop:
+				return "OnSky Medical Alert service"
+			case model.BedSensorApnea:
+				return "OnSky Medical Alert service"
+			case model.BedSensorTachycardia:
+				return "OnSky Medical Alert service"
+			case model.BedSensorBradycardia:
+				return "OnSky Medical Alert service"
+			case model.BedSensorBrainDisorder:
 				return "OnSky Medical Alert service"
 			default:
 				return "OnSky Security & Safety service"
@@ -333,6 +357,16 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 				return "WAVTRAXX detect a temperature exceeds the threshold allowed at"
 			case model.LowBattery:
 				return "Warning: Low battery detected at"
+			case model.BedSensorHeartStop:
+				return ""
+			case model.BedSensorApnea:
+				return ""
+			case model.BedSensorTachycardia:
+				return ""
+			case model.BedSensorBradycardia:
+				return ""
+			case model.BedSensorBrainDisorder:
+				return ""
 			default:
 				return "Intruder detected in"
 			}
@@ -342,6 +376,16 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 		switch key {
 		case "onsky_security":
 			switch templateType {
+			case model.BedSensorHeartStop:
+				return "Dich vu y te OnSky"
+			case model.BedSensorApnea:
+				return "Dich vu y te OnSky"
+			case model.BedSensorTachycardia:
+				return "Dich vu y te OnSky"
+			case model.BedSensorBradycardia:
+				return "Dich vu y te OnSky"
+			case model.BedSensorBrainDisorder:
+				return "Dich vu y te OnSky"
 			case model.SafetyBreachSOS:
 				return "Dich vu y te OnSky"
 			default:
@@ -385,6 +429,16 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 				return "Thiet bi WAVTRAXX phat hien nhiet do vuot qua nguong cho phep tai"
 			case model.LowBattery:
 				return "Canh bao thiet bi SOS yeu pin tai"
+			case model.BedSensorHeartStop:
+				return ""
+			case model.BedSensorApnea:
+				return ""
+			case model.BedSensorTachycardia:
+				return ""
+			case model.BedSensorBradycardia:
+				return ""
+			case model.BedSensorBrainDisorder:
+				return ""
 			default:
 				return "Phat hien dot nhap tai"
 			}
