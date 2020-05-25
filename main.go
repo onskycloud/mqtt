@@ -10,6 +10,7 @@ import (
 	"time"
 	"unicode"
 
+	MQTT "github.com/eclipse/paho.mqtt.golang"
 	"github.com/onskycloud/rbac/model"
 	proto "github.com/onskycloud/rbac/proto/calling"
 	notifyProto "github.com/onskycloud/rbac/proto/simple-notification"
@@ -520,4 +521,30 @@ func PrepareBody(templateType model.NotificationType, locale string, gatewayName
 func PrepareMedia(templateType model.NotificationType, locale string) string {
 	callType := strings.ToLower(strings.Replace(templateType.String(), " ", "-", -1))
 	return fmt.Sprintf("?safety=%s&locale=%s", callType, locale)
+}
+
+// Connect to the broker
+func Connect(url, clientID, username, password string) (MQTT.Client, error) {
+	options := MQTT.NewClientOptions().SetClientID(clientID).AddBroker(url) //! Use for demo
+	options.SetUsername(username).SetPassword(password)                     //! Use for demo
+
+	c := MQTT.NewClient(options)
+	token := c.Connect()
+	if token.Wait() && token.Error() != nil {
+		return nil, token.Error()
+	}
+	return c, nil
+}
+
+// Publish to the broker
+func Publish(client MQTT.Client, topic, value string) error {
+	if token := client.Publish(topic, 1, true, value); token.Wait() && token.Error() != nil {
+		return token.Error()
+	}
+	return nil
+}
+
+// Disconnect to the broker
+func Disconnect(client MQTT.Client) {
+	client.Disconnect(100)
 }
