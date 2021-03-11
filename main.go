@@ -289,7 +289,7 @@ func ConvertMode(mode string) model.Mode {
 //-------------PREPARE BODY HELPER--------------------
 
 // PrepareResourceLocale prepare text message for any locale
-func PrepareResourceLocale(templateType model.NotificationType, key string, locale string, gatewayName string, deviceName string, zoneName string, date string, timestamp string) string {
+func PrepareResourceLocale(templateType model.NotificationType, key string, locale string, gatewayName string, deviceName string, zoneName string, date string, timestamp string, fullName string) string {
 	switch locale {
 	case "en-US":
 		switch key {
@@ -328,8 +328,14 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 			return "on"
 		case "date":
 			return date
+		case "of":
+			return "cua"
+		case "at":
+			return "tai"
 		case "at_time":
 			return "at"
+		case "full_name":
+			return fullName + " "
 		case "time":
 			return timestamp
 		case "please_check":
@@ -421,6 +427,12 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 			return "Vao ngay"
 		case "date":
 			return date
+		case "of":
+			return "cua"
+		case "at":
+			return "tai"
+		case "full_name":
+			return fullName + " "
 		case "at_time":
 			return "luc"
 		case "time":
@@ -481,7 +493,7 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 }
 
 // PrepareBody prepare body of a message
-func PrepareBody(templateType model.NotificationType, locale string, gatewayName string, deviceName string, zoneName string, timezone string, address string, phoneNumber string) string {
+func PrepareBody(templateType model.NotificationType, locale string, gatewayName string, deviceName string, zoneName string, timezone string, address string, phoneNumber string, fullName string) string {
 	now := time.Now()
 	if timezone == "" {
 		timezone = GetTimeZone(locale)
@@ -497,23 +509,32 @@ func PrepareBody(templateType model.NotificationType, locale string, gatewayName
 	date := strconv.Itoa(now.Day()) + "/" + strconv.Itoa(int(now.Month()))
 	timestamp := strconv.Itoa(now.Hour()) + ":" + strconv.Itoa(now.Minute())
 	//  OnSky Security & Safety service. Emergency SOS sent from location: <Name>, <address>, <Phone>, device name and zone name. Date, Time. Check Now!
-	template := "{{onsky_security}}. {{security_alert}} {{address}}. {{phone}}:{{phone_number}}, {{device}} {{device_name}}. {{on_date}} {{date}}, {{at_time}} {{time}}. {{please_check}} ."
-
-	str := strings.Replace(template, "{{onsky_security}}", PrepareResourceLocale(templateType, "onsky_security", locale, gatewayName, deviceName, zoneName, "", ""), -1)
+	// OnSky Medical Alert Service. Possible Apnea Alert from SkyPad device of [user name] at [address] on [date] at [time]. Phone: [0123456789]. Please check.
+	template := "{{onsky_security}}. {{security_alert}}{{of}}{{full_name}}{{at}} {{address}}. {{phone}}:{{phone_number}}, {{device}} {{device_name}}. {{on_date}} {{date}}, {{at_time}} {{time}}. {{please_check}} ."
+	str := strings.Replace(template, "{{onsky_security}}", PrepareResourceLocale(templateType, "onsky_security", locale, gatewayName, deviceName, zoneName, "", "", fullName), -1)
 	// str = strings.Replace(str, "{{zone}}", PrepareResourceLocale(templateType, "zone", locale, gatewayName, deviceName, zoneName, "", ""), -1)
 	// str = strings.Replace(str, "{{gateway_name}}", PrepareResourceLocale(templateType, "gateway_name", locale, gatewayName, deviceName, zoneName, "", ""), -1)
 	// str = strings.Replace(str, "{{zone_name}}", PrepareResourceLocale(templateType, "zone_name", locale, gatewayName, deviceName, zoneName, "", ""), -1)
 	str = strings.Replace(str, "{{address}}", address, -1)
-	str = strings.Replace(str, "{{phone}}", PrepareResourceLocale(templateType, "phone", locale, gatewayName, deviceName, zoneName, "", ""), -1)
+	str = strings.Replace(str, "{{phone}}", PrepareResourceLocale(templateType, "phone", locale, gatewayName, deviceName, zoneName, "", "", fullName), -1)
 	str = strings.Replace(str, "{{phone_number}}", phoneNumber, -1)
-	str = strings.Replace(str, "{{device}}", PrepareResourceLocale(templateType, "device", locale, gatewayName, deviceName, zoneName, "", ""), -1)
-	str = strings.Replace(str, "{{device_name}}", PrepareResourceLocale(templateType, "device_name", locale, gatewayName, deviceName, zoneName, "", ""), -1)
-	str = strings.Replace(str, "{{on_date}}", PrepareResourceLocale(templateType, "on_date", locale, gatewayName, deviceName, zoneName, "", ""), -1)
-	str = strings.Replace(str, "{{date}}", PrepareResourceLocale(templateType, "date", locale, gatewayName, deviceName, zoneName, date, ""), -1)
-	str = strings.Replace(str, "{{at_time}}", PrepareResourceLocale(templateType, "at_time", locale, gatewayName, deviceName, zoneName, "", ""), -1)
-	str = strings.Replace(str, "{{time}}", PrepareResourceLocale(templateType, "time", locale, gatewayName, deviceName, zoneName, "", timestamp), -1)
-	str = strings.Replace(str, "{{please_check}}", PrepareResourceLocale(templateType, "please_check", locale, gatewayName, deviceName, zoneName, "", ""), -1)
-	str = strings.Replace(str, "{{security_alert}}", PrepareResourceLocale(templateType, "security_alert", locale, gatewayName, deviceName, zoneName, "", ""), -1)
+	str = strings.Replace(str, "{{device}}", PrepareResourceLocale(templateType, "device", locale, gatewayName, deviceName, zoneName, "", "", fullName), -1)
+	str = strings.Replace(str, "{{device_name}}", PrepareResourceLocale(templateType, "device_name", locale, gatewayName, deviceName, zoneName, "", "", fullName), -1)
+	str = strings.Replace(str, "{{on_date}}", PrepareResourceLocale(templateType, "on_date", locale, gatewayName, deviceName, zoneName, "", "", fullName), -1)
+	str = strings.Replace(str, "{{date}}", PrepareResourceLocale(templateType, "date", locale, gatewayName, deviceName, zoneName, date, "", fullName), -1)
+	str = strings.Replace(str, "{{at_time}}", PrepareResourceLocale(templateType, "at_time", locale, gatewayName, deviceName, zoneName, "", "", fullName), -1)
+	str = strings.Replace(str, "{{time}}", PrepareResourceLocale(templateType, "time", locale, gatewayName, deviceName, zoneName, "", timestamp, fullName), -1)
+	str = strings.Replace(str, "{{please_check}}", PrepareResourceLocale(templateType, "please_check", locale, gatewayName, deviceName, zoneName, "", "", fullName), -1)
+	str = strings.Replace(str, "{{security_alert}}", PrepareResourceLocale(templateType, "security_alert", locale, gatewayName, deviceName, zoneName, "", "", fullName), -1)
+	str = strings.Replace(str, "{{at}}", PrepareResourceLocale(templateType, "at", locale, gatewayName, deviceName, zoneName, "", "", fullName), -1)
+
+	if fullName != "" {
+		str = strings.Replace(str, "{{of}}", PrepareResourceLocale(templateType, "of", locale, gatewayName, deviceName, zoneName, "", "", fullName), -1)
+		str = strings.Replace(str, "{{full_name}}", PrepareResourceLocale(templateType, "full_name", locale, gatewayName, deviceName, zoneName, "", "", fullName), -1)
+	} else {
+		str = strings.Replace(str, "{{of}}", "", -1)
+		str = strings.Replace(str, "{{full_name}}", "", -1)
+	}
 	return str
 }
 
