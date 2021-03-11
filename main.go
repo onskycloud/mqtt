@@ -374,17 +374,17 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 			case model.LowBattery:
 				return "Warning: Low battery detected at"
 			case model.BedSensorSOS:
-				return "Emergency signals are sent from your device at"
+				return "Possible SOS Emergency Alert from SkyPad device"
 			case model.BedSensorHeartStop:
-				return "OS-LAVIE detects Sudden Cardiac Arrest (SCA). Your heart stops beating for about 5s starting at"
+				return "Possible Heart Attack Alert from SkyPad device"
 			case model.BedSensorBreathStop:
-				return "OS-LAVIE detects sleep apnea. You stops breathing for 30s to 60s starting at"
+				return "Possible Apnea Alert from SkyPad device"
 			case model.BedSensorTachycardia:
 				return "OS-LAVIE detects irregular heart rhythms - tachycardia. Your heart rate is very fast, starting at "
 			case model.BedSensorBradycardia:
 				return "OS-LAVIE detects irregular heart rhythms - bradycardia. Your heart rate is very slow, starting at"
 			case model.BedSensorEpilepsy:
-				return "OS-LAVIE detects brain seizure due to epilepsy or brain disorder starting at"
+				return "Possible Seizure Alert from SkyPad device"
 			default:
 				return "Intruder detected in"
 			}
@@ -473,17 +473,17 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 			case model.LowBattery:
 				return "Canh bao thiet bi SOS yeu pin tai"
 			case model.BedSensorSOS:
-				return "Tin hieu khan cap duoc gui di tu thiet bi OS-LAVIE tai"
+				return "Cảnh báo có tín hiệu cấp cứu của người dùng được gửi từ thiết bị Skypad"
 			case model.BedSensorHeartStop:
-				return "OS-LAVIE phat hien tim ngung dap (SCA). Tim cua ban ngung dap khoang 5s vao luc"
+				return "Cảnh báo tim người dùng có dấu hiệu ngừng đập được gửi từ thiết bị Skypad"
 			case model.BedSensorBreathStop:
-				return "OS-LAVIE phat hien dau hieu ngung tho. Ban da ngung tho khoang 30s vao luc"
+				return "Cảnh báo phổi người dùng có dấu hiệu ngưng thở được gửi từ thiết bị Skypad"
 			case model.BedSensorTachycardia:
 				return "OS-LAVIE phat hien nhip tim khong on dinh. Tim cua ban dap rat nhanh vao luc "
 			case model.BedSensorBradycardia:
 				return "OS-LAVIE phat hien nhip tim khong on dinh. Tim cua ban dap rat cham vao luc"
 			case model.BedSensorEpilepsy:
-				return "OS-LAVIE phat hien dong kinh. Ban co the bi dong kinh hoac roi loan nao vao luc"
+				return "Cảnh báo người dùng có dấu hiệu bị động kinh được gửi từ thiết bị Skypad"
 			default:
 				return "Phat hien dot nhap tai"
 			}
