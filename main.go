@@ -341,19 +341,19 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 		case "please_check":
 			switch templateType {
 			case model.SafetyBreachSOS:
-				return "Be concerned!"
+				return "Please check"
 			case model.BedSensorSOS:
-				return "Be concerned!"
+				return "Please check"
 			case model.BedSensorHeartStop:
-				return "Be concerned!"
+				return "Please check"
 			case model.BedSensorBreathStop:
-				return "Be concerned!"
+				return "Please check"
 			case model.BedSensorTachycardia:
-				return "Be concerned!"
+				return "Please check"
 			case model.BedSensorBradycardia:
-				return "Be concerned!"
+				return "Please check"
 			case model.BedSensorEpilepsy:
-				return "Be concerned!"
+				return "Please check"
 			default:
 				return "Check Now!"
 			}
@@ -440,19 +440,19 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 		case "please_check":
 			switch templateType {
 			case model.SafetyBreachSOS:
-				return "Hay chu y"
+				return "Vui lòng kiểm tra"
 			case model.BedSensorSOS:
-				return "Hay chu y"
+				return "Vui lòng kiểm tra"
 			case model.BedSensorHeartStop:
-				return "Hay chu y"
+				return "Vui lòng kiểm tra"
 			case model.BedSensorBreathStop:
-				return "Hay chu y"
+				return "Vui lòng kiểm tra"
 			case model.BedSensorTachycardia:
-				return "Hay chu y"
+				return "Vui lòng kiểm tra"
 			case model.BedSensorBradycardia:
-				return "Hay chu y"
+				return "Vui lòng kiểm tra"
 			case model.BedSensorEpilepsy:
-				return "Hay chu y"
+				return "Vui lòng kiểm tra"
 			default:
 				return "Vui long kiem tra"
 			}
@@ -510,7 +510,7 @@ func PrepareBody(templateType model.NotificationType, locale string, gatewayName
 	timestamp := strconv.Itoa(now.Hour()) + ":" + strconv.Itoa(now.Minute())
 	//  OnSky Security & Safety service. Emergency SOS sent from location: <Name>, <address>, <Phone>, device name and zone name. Date, Time. Check Now!
 	// OnSky Medical Alert Service. Possible Apnea Alert from SkyPad device of [user name] at [address] on [date] at [time]. Phone: [0123456789]. Please check.
-	template := "{{onsky_security}}. {{security_alert}}{{of}}{{full_name}}{{at}} {{address}}. {{phone}}:{{phone_number}}, {{device}} {{device_name}}. {{on_date}} {{date}}, {{at_time}} {{time}}. {{please_check}} ."
+	template := "{{onsky_security}}. {{security_alert}}{{of}}{{full_name}}{{at}} {{address}}. {{phone}}:{{phone_number}}, {{device}} {{device_name}}. {{on_date}} {{date}}, {{at_time}} {{time}}. {{please_check}}."
 	str := strings.Replace(template, "{{onsky_security}}", PrepareResourceLocale(templateType, "onsky_security", locale, gatewayName, deviceName, zoneName, "", "", fullName), -1)
 	// str = strings.Replace(str, "{{zone}}", PrepareResourceLocale(templateType, "zone", locale, gatewayName, deviceName, zoneName, "", ""), -1)
 	// str = strings.Replace(str, "{{gateway_name}}", PrepareResourceLocale(templateType, "gateway_name", locale, gatewayName, deviceName, zoneName, "", ""), -1)
