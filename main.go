@@ -329,9 +329,9 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 		case "date":
 			return date
 		case "of":
-			return "cua"
+			return " of "
 		case "at":
-			return "tai"
+			return "at"
 		case "at_time":
 			return "at"
 		case "full_name":
@@ -428,7 +428,7 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 		case "date":
 			return date
 		case "of":
-			return "cua"
+			return " cua "
 		case "at":
 			return "tai"
 		case "full_name":
@@ -532,7 +532,7 @@ func PrepareBody(templateType model.NotificationType, locale string, gatewayName
 		str = strings.Replace(str, "{{of}}", PrepareResourceLocale(templateType, "of", locale, gatewayName, deviceName, zoneName, "", "", fullName), -1)
 		str = strings.Replace(str, "{{full_name}}", PrepareResourceLocale(templateType, "full_name", locale, gatewayName, deviceName, zoneName, "", "", fullName), -1)
 	} else {
-		str = strings.Replace(str, "{{of}}", "", -1)
+		str = strings.Replace(str, "{{of}}", " ", -1)
 		str = strings.Replace(str, "{{full_name}}", "", -1)
 	}
 	return str
