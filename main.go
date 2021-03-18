@@ -440,19 +440,19 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 		case "please_check":
 			switch templateType {
 			case model.SafetyBreachSOS:
-				return "Vui lòng kiểm tra"
+				return "Vui long kiem tra"
 			case model.BedSensorSOS:
-				return "Vui lòng kiểm tra"
+				return "Vui long kiem tra"
 			case model.BedSensorHeartStop:
-				return "Vui lòng kiểm tra"
+				return "Vui long kiem tra"
 			case model.BedSensorBreathStop:
-				return "Vui lòng kiểm tra"
+				return "Vui long kiem tra"
 			case model.BedSensorTachycardia:
-				return "Vui lòng kiểm tra"
+				return "Vui long kiem tra"
 			case model.BedSensorBradycardia:
-				return "Vui lòng kiểm tra"
+				return "Vui long kiem tra"
 			case model.BedSensorEpilepsy:
-				return "Vui lòng kiểm tra"
+				return "Vui long kiem tra"
 			default:
 				return "Vui long kiem tra"
 			}
@@ -473,17 +473,17 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 			case model.LowBattery:
 				return "Canh bao thiet bi SOS yeu pin tai"
 			case model.BedSensorSOS:
-				return "Cảnh báo có tín hiệu cấp cứu của người dùng được gửi từ thiết bị Skypad"
+				return "Caah bao co tin hieu cap cuu cua nguoi dung duoc gui tu thiet bi Skypad"
 			case model.BedSensorHeartStop:
-				return "Cảnh báo tim người dùng có dấu hiệu ngừng đập được gửi từ thiết bị Skypad"
+				return "Canh bao tim nguoi dung co dau hieu ngung dap duoc gui tu thiet bi Skypad"
 			case model.BedSensorBreathStop:
-				return "Cảnh báo phổi người dùng có dấu hiệu ngưng thở được gửi từ thiết bị Skypad"
+				return "Canh bao phoi nguoi dung co dau hieu ngung tho duoc gui tu thiet bi Skypad"
 			case model.BedSensorTachycardia:
 				return "OS-LAVIE phat hien nhip tim khong on dinh. Tim cua ban dap rat nhanh vao luc "
 			case model.BedSensorBradycardia:
 				return "OS-LAVIE phat hien nhip tim khong on dinh. Tim cua ban dap rat cham vao luc"
 			case model.BedSensorEpilepsy:
-				return "Cảnh báo người dùng có dấu hiệu bị động kinh được gửi từ thiết bị Skypad"
+				return "Canh bao phoi nguoi dung co dau hieu bi dong kinh duoc gui tu thiet bi Skypad"
 			default:
 				return "Phat hien dot nhap tai"
 			}
