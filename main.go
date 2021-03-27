@@ -473,17 +473,17 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 			case model.LowBattery:
 				return "Canh bao thiet bi SOS yeu pin tai"
 			case model.BedSensorSOS:
-				return "Caah bao co tin hieu cap cuu cua nguoi dung duoc gui tu thiet bi Skypad"
+				return "Canh bao co tin hieu cap cuu cua nguoi dung duoc gui tu thiet bi Skypad"
 			case model.BedSensorHeartStop:
 				return "Canh bao tim nguoi dung co dau hieu ngung dap duoc gui tu thiet bi Skypad"
 			case model.BedSensorBreathStop:
 				return "Canh bao phoi nguoi dung co dau hieu ngung tho duoc gui tu thiet bi Skypad"
 			case model.BedSensorTachycardia:
-				return "OS-LAVIE phat hien nhip tim khong on dinh. Tim cua ban dap rat nhanh vao luc "
+				return "Canh bao tim nguoi dung co dau hieu khong on dinh. Tim cua ban dap rat nhanh vao luc "
 			case model.BedSensorBradycardia:
-				return "OS-LAVIE phat hien nhip tim khong on dinh. Tim cua ban dap rat cham vao luc"
+				return "Canh bao tim nguoi dung co dau hieu khong on dinh. Tim cua ban dap rat cham vao luc"
 			case model.BedSensorEpilepsy:
-				return "Canh bao phoi nguoi dung co dau hieu bi dong kinh duoc gui tu thiet bi Skypad"
+				return "Canh bao nguoi dung co dau hieu bi dong kinh duoc gui tu thiet bi Skypad"
 			default:
 				return "Phat hien dot nhap tai"
 			}
