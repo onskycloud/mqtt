@@ -228,7 +228,7 @@ func ConvertStringToInt(text string) int {
 	return value
 }
 
-//GetNotificationType get notification type
+// GetNotificationType get notification type
 func GetNotificationType(securityType model.SecurityType) model.NotificationType {
 	switch securityType {
 	case model.Co:
@@ -364,27 +364,27 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 			case model.SafetyBreachSmoke:
 				return "Detecting fire signs at"
 			case model.SafetyBreachSOS:
-				return "Emergency SOS sent from location"
+				return "Urgency SOS sent from location"
 			case model.SafetyBreachTempHumd:
 				return "Room temperature exceeds the threshold allowed at"
 			case model.OSLocusSOS:
-				return "Emergency signals are sent from your WAVTRAXX device at"
+				return "Urgency signals are sent from your WAVTRAXX device at"
 			case model.OSLocusTemp:
 				return "WAVTRAXX detect a temperature exceeds the threshold allowed at"
 			case model.LowBattery:
 				return "Warning: Low battery detected at"
 			case model.BedSensorSOS:
-				return "Possible SOS Emergency Alert from SkyPad device"
+				return "Possible SOS Urgency Alert from Onsky device"
 			case model.BedSensorHeartStop:
-				return "Possible Heart Attack Alert from SkyPad device"
+				return "Possible Heart Attack Alert from Onsky device"
 			case model.BedSensorBreathStop:
-				return "Possible Apnea Alert from SkyPad device"
+				return "Possible Apnea Alert from Onsky device"
 			case model.BedSensorTachycardia:
 				return "OS-LAVIE detects irregular heart rhythms - tachycardia. Your heart rate is very fast, starting at "
 			case model.BedSensorBradycardia:
 				return "OS-LAVIE detects irregular heart rhythms - bradycardia. Your heart rate is very slow, starting at"
 			case model.BedSensorEpilepsy:
-				return "Possible Seizure Alert from SkyPad device"
+				return "Possible Seizure Alert from Onsky device"
 			default:
 				return "Intruder detected in"
 			}
@@ -473,17 +473,17 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 			case model.LowBattery:
 				return "Canh bao thiet bi SOS yeu pin tai"
 			case model.BedSensorSOS:
-				return "Canh bao co tin hieu cap cuu cua nguoi dung duoc gui tu thiet bi Skypad"
+				return "Canh bao co tin hieu cap cuu cua nguoi dung duoc gui tu thiet bi Onsky"
 			case model.BedSensorHeartStop:
-				return "Canh bao tim nguoi dung co dau hieu ngung dap duoc gui tu thiet bi Skypad"
+				return "Canh bao tim nguoi dung co dau hieu ngung dap duoc gui tu thiet bi Onsky"
 			case model.BedSensorBreathStop:
-				return "Canh bao phoi nguoi dung co dau hieu ngung tho duoc gui tu thiet bi Skypad"
+				return "Canh bao phoi nguoi dung co dau hieu ngung tho duoc gui tu thiet bi Onsky"
 			case model.BedSensorTachycardia:
 				return "Canh bao tim nguoi dung co dau hieu khong on dinh. Tim cua ban dap rat nhanh vao luc "
 			case model.BedSensorBradycardia:
 				return "Canh bao tim nguoi dung co dau hieu khong on dinh. Tim cua ban dap rat cham vao luc"
 			case model.BedSensorEpilepsy:
-				return "Canh bao nguoi dung co dau hieu bi dong kinh duoc gui tu thiet bi Skypad"
+				return "Canh bao nguoi dung co dau hieu bi dong kinh duoc gui tu thiet bi Onsky"
 			default:
 				return "Phat hien dot nhap tai"
 			}
