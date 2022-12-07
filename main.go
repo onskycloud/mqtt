@@ -295,6 +295,8 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 		switch key {
 		case "onsky_security":
 			switch templateType {
+			case model.BedSensorAbnormalVitalSigns:
+				return "OnSky Medical Alert service"
 			case model.SafetyBreachSOS:
 				return "OnSky Medical Alert service"
 			case model.BedSensorSOS:
@@ -354,6 +356,8 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 				return "Please check"
 			case model.BedSensorEpilepsy:
 				return "Please check"
+			case model.BedSensorAbnormalVitalSigns:
+				return "Please check"
 			default:
 				return "Check Now!"
 			}
@@ -385,6 +389,8 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 				return "OS-LAVIE detects irregular heart rhythms - bradycardia. Your heart rate is very slow, starting at"
 			case model.BedSensorEpilepsy:
 				return "Possible Seizure Alert from OnSky device"
+			case model.BedSensorAbnormalVitalSigns:
+				return "Alert detect abnormal Vital Signs from OnSky device"
 			default:
 				return "Intruder detected in"
 			}
@@ -394,6 +400,8 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 		switch key {
 		case "onsky_security":
 			switch templateType {
+			case model.BedSensorAbnormalVitalSigns:
+				return "Dich vu y te OnSky"
 			case model.SafetyBreachSOS:
 				return "Dich vu y te OnSky"
 			case model.BedSensorSOS:
@@ -439,6 +447,8 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 			return timestamp
 		case "please_check":
 			switch templateType {
+			case model.BedSensorAbnormalVitalSigns:
+				return "Vui long kiem tra"
 			case model.SafetyBreachSOS:
 				return "Vui long kiem tra"
 			case model.BedSensorSOS:
@@ -484,6 +494,8 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 				return "Canh bao tim nguoi dung co dau hieu khong on dinh. Tim cua ban dap rat cham vao luc"
 			case model.BedSensorEpilepsy:
 				return "Canh bao nguoi dung co dau hieu bi dong kinh duoc gui tu thiet bi OnSky"
+			case model.BedSensorAbnormalVitalSigns:
+				return "Canh bao phat hien Dau Hieu Sinh Ton bat thuong duoc gui tu thiet bi OnSky"
 			default:
 				return "Phat hien dot nhap tai"
 			}
