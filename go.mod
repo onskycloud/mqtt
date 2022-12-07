@@ -4,5 +4,5 @@ go 1.13
 
 require (
 	github.com/eclipse/paho.mqtt.golang v1.2.0
-	github.com/onskycloud/rbac v1.10.1
+	github.com/onskycloud/rbac v1.10.16-dev
 )
