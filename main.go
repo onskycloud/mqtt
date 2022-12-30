@@ -309,7 +309,21 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 				return "OnSky Medical Alert service"
 			case model.BedSensorBradycardia:
 				return "OnSky Medical Alert service"
-			case model.BedSensorEpilepsy:
+			case model.BedSensorSeizure:
+				return "OnSky Medical Alert service"
+			case model.BedSensorBodyTempHeight:
+				return "OnSky Medical Alert service"
+			case model.BedSensorRoomTempHeight:
+				return "OnSky Medical Alert service"
+			case model.BedSensorHumidityHeight:
+				return "OnSky Medical Alert service"
+			case model.BedSensorHeartRateHeight:
+				return "OnSky Medical Alert service"
+			case model.BedSensorHeartRateLow:
+				return "OnSky Medical Alert service"
+			case model.BedSensorBedLeaving:
+				return "OnSky Medical Alert service"
+			case model.BedSensorCrying:
 				return "OnSky Medical Alert service"
 			default:
 				return "OnSky Security & Safety service"
@@ -354,9 +368,23 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 				return "Please check"
 			case model.BedSensorBradycardia:
 				return "Please check"
-			case model.BedSensorEpilepsy:
+			case model.BedSensorSeizure:
 				return "Please check"
 			case model.BedSensorAbnormalVitalSigns:
+				return "Please check"
+			case model.BedSensorBodyTempHeight:
+				return "Please check"
+			case model.BedSensorRoomTempHeight:
+				return "Please check"
+			case model.BedSensorHumidityHeight:
+				return "Please check"
+			case model.BedSensorHeartRateHeight:
+				return "Please check"
+			case model.BedSensorHeartRateLow:
+				return "Please check"
+			case model.BedSensorBedLeaving:
+				return "Please check"
+			case model.BedSensorCrying:
 				return "Please check"
 			default:
 				return "Check Now!"
@@ -387,10 +415,24 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 				return "OS-LAVIE detects irregular heart rhythms - tachycardia. Your heart rate is very fast, starting at "
 			case model.BedSensorBradycardia:
 				return "OS-LAVIE detects irregular heart rhythms - bradycardia. Your heart rate is very slow, starting at"
-			case model.BedSensorEpilepsy:
-				return "Possible Seizure Alert from OnSky device"
+			case model.BedSensorSeizure:
+				return "Possible Seizures Alert from OnSky device"
 			case model.BedSensorAbnormalVitalSigns:
 				return "Alert detect abnormal Vital Signs from OnSky device"
+			case model.BedSensorBodyTempHeight:
+				return "Detecting body temperature is too high from OnSky device"
+			case model.BedSensorRoomTempHeight:
+				return "Detecting room temperature is too high from OnSky device"
+			case model.BedSensorHumidityHeight:
+				return "Detecting room humidity is too high from OnSky device"
+			case model.BedSensorHeartRateHeight:
+				return "Detecting heart rate is too high from OnSky device"
+			case model.BedSensorHeartRateLow:
+				return "Detecting heart rate is too low from OnSky device"
+			case model.BedSensorBedLeaving:
+				return "Detecting user have left the bed from OnSky device"
+			case model.BedSensorCrying:
+				return "Detecting baby crying from OnSky device"
 			default:
 				return "Intruder detected in"
 			}
@@ -414,7 +456,21 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 				return "Dich vu y te OnSky"
 			case model.BedSensorBradycardia:
 				return "Dich vu y te OnSky"
-			case model.BedSensorEpilepsy:
+			case model.BedSensorSeizure:
+				return "Dich vu y te OnSky"
+			case model.BedSensorBodyTempHeight:
+				return "Dich vu y te OnSky"
+			case model.BedSensorRoomTempHeight:
+				return "Dich vu y te OnSky"
+			case model.BedSensorHumidityHeight:
+				return "Dich vu y te OnSky"
+			case model.BedSensorHeartRateHeight:
+				return "Dich vu y te OnSky"
+			case model.BedSensorHeartRateLow:
+				return "Dich vu y te OnSky"
+			case model.BedSensorBedLeaving:
+				return "Dich vu y te OnSky"
+			case model.BedSensorCrying:
 				return "Dich vu y te OnSky"
 			default:
 				return "Dich vu an ninh & an toan OnSky"
@@ -461,7 +517,21 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 				return "Vui long kiem tra"
 			case model.BedSensorBradycardia:
 				return "Vui long kiem tra"
-			case model.BedSensorEpilepsy:
+			case model.BedSensorSeizure:
+				return "Vui long kiem tra"
+			case model.BedSensorBodyTempHeight:
+				return "Vui long kiem tra"
+			case model.BedSensorRoomTempHeight:
+				return "Vui long kiem tra"
+			case model.BedSensorHumidityHeight:
+				return "Vui long kiem tra"
+			case model.BedSensorHeartRateHeight:
+				return "Vui long kiem tra"
+			case model.BedSensorHeartRateLow:
+				return "Vui long kiem tra"
+			case model.BedSensorBedLeaving:
+				return "Vui long kiem tra"
+			case model.BedSensorCrying:
 				return "Vui long kiem tra"
 			default:
 				return "Vui long kiem tra"
@@ -492,10 +562,24 @@ func PrepareResourceLocale(templateType model.NotificationType, key string, loca
 				return "Canh bao tim nguoi dung co dau hieu khong on dinh. Tim cua ban dap rat nhanh vao luc "
 			case model.BedSensorBradycardia:
 				return "Canh bao tim nguoi dung co dau hieu khong on dinh. Tim cua ban dap rat cham vao luc"
-			case model.BedSensorEpilepsy:
-				return "Canh bao nguoi dung co dau hieu bi dong kinh duoc gui tu thiet bi OnSky"
+			case model.BedSensorSeizure:
+				return "Canh bao nguoi dung co dau hieu co giat duoc gui tu thiet bi OnSky"
 			case model.BedSensorAbnormalVitalSigns:
 				return "Canh bao phat hien Dau Hieu Sinh Ton bat thuong duoc gui tu thiet bi OnSky"
+			case model.BedSensorBodyTempHeight:
+				return "Phat hien nhiet do co the qua cao tu thiet bi OnSky"
+			case model.BedSensorRoomTempHeight:
+				return "Phat hien nhiet do phong qua cao tu thiet bi OnSky"
+			case model.BedSensorHumidityHeight:
+				return "Phat hien do am qua cao tu thiet bi OnSky"
+			case model.BedSensorHeartRateHeight:
+				return "Phat hien nhip tim qua cao tu thiet bi OnSky"
+			case model.BedSensorHeartRateLow:
+				return "Phat hien nhip tim qua thap tu thiet bi OnSky"
+			case model.BedSensorBedLeaving:
+				return "Phat hien nguoi dung da roi khoi giuong tu thiet bi OnSky"
+			case model.BedSensorCrying:
+				return "Phat hien em be dang khoc tu thiet bi OnSky"
 			default:
 				return "Phat hien dot nhap tai"
 			}
